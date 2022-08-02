@@ -1,7 +1,16 @@
-local status_ok, which_key = pcall(require, "which-key")
-if not status_ok then
+-------------------------------------------------------------------------------------------------------------
+---------------------------------- Useful Shortcuts and Dealing with Erros ----------------------------------
+-------------------------------------------------------------------------------------------------------------
+
+local status_ok, which_key = pcall(require, "which-key") 
+
+if not status_ok then 
   return
 end
+
+-------------------------------------------------------------------------------------------------------------
+----------------------------------------- General Which Key Setting -----------------------------------------
+-------------------------------------------------------------------------------------------------------------
 
 local setup = {
   plugins = {
@@ -89,19 +98,67 @@ local m_opts = {
 }
 
 
+-------------------------------------------------------------------------------------------------------------
+---------------------------------------------- Helper Functions ---------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+
+function fibonacci_split()
+  -- Splits horizontally if height is bigger than width and vertically otherwise
+
+  -- Get Ratio between total number of columns and lines
+  -- Should be about the same as "vim.go.columns / vim.go.lines"
+  -- However, it changes when terminal is not full screen, so fixed 4.5 is used instead
+  local ratio = 4.5
+
+  -- norm width  = window width          * proportion of resolution (16, if 16:9)
+  local nwidth   = vim.fn.winwidth("%")  * 16
+
+  -- norm height = window height         * ratio for normalising aspect ratio * proportion of resolution (9, if 16:9)
+  local nheight  = vim.fn.winheight("%") * ratio                              * 9
+
+  if nwidth > nheight then
+    vim.cmd("vsp")
+  else
+    vim.cmd("sp")
+  end
+end
+
+
+-------------------------------------------------------------------------------------------------------------
+------------------------------------------- Actual Menu Structure -------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+
 local mappings = {
+
+  ["<tab>"] = { "<c-w><c-p>", "Previous Pane" },
+
   f = {
     name = "File",
     s = { ":w<CR>", "Save File" },
+  },
+
+  b = {
+    name = "Buffer",
+    ["<tab>"] = { ":b#<CR>", "Previous Buffer" },
   },
 
   w = {
     name = "Window",
     s = {
         name = "Split",
+        s = {"<cmd>lua fibonacci_split()<CR>", "Fibonncci" },
         h = { ":sp<CR>", "Horizontal" },
         v = { ":vsp<CR>", "Vertical" },
-      },
+    },
+    j = { "<c-w><c-j>", "Focus Down" },
+    k = { "<c-w><c-k>", "Focus Up" },
+    h = { "<c-w><c-h>", "Focus Left" },
+    l = { "<c-w><c-l>", "Focus Right" },
+    J = { "<c-w>J", "Move Down" },
+    K = { "<c-w>K", "Move Up" },
+    H = { "<c-w>H", "Move Left" },
+    L = { "<c-w>L", "Move Right" },
+
     q = { ":q<CR>", "Quit Vim" },
   },
 }
