@@ -9,6 +9,9 @@ return require('packer').startup(function(use)
   -- Which Key, this config is built around it
   use "folke/which-key.nvim"
 
+  -- File Explorer
+  use {"kyazdani42/nvim-tree.lua", requires={'kyazdani42/nvim-web-devicons'}} -- 'kyazdani42/nvim-web-devicons' is optional, for file icons
+
   -- Themes
   use 'shaunsingh/nord.nvim'
 
