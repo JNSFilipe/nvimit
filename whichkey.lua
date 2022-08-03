@@ -160,8 +160,16 @@ local mappings = {
     L = { "<c-w>L", "Move Right" },
     t = { ":NvimTreeToggle<CR>", "Toggle File Tree"},
     T = { ":NvimTreeFocus<CR>", "Focus File Tree"},
+  },
 
-    q = { ":q<CR>", "Quit Vim" },
+  q = {
+    name = "Quit",
+    q = { ":q<CR>", "Quit Window" },
+    Q = { ":qa<CR>", "Quit Vim" },
+    s = { ":qs<CR>", "Quit Window and Save" },
+    S = { ":wqall<CR>", "Quit Vim and Save All" },
+    x = { ":q!<CR>", "Quit Window Without Saving" },
+    X = { ":qa!<CR>", "Quit Vim Without Saving" },
   },
 }
 
