@@ -158,8 +158,8 @@ local mappings = {
     K = { "<c-w>K", "Move Up" },
     H = { "<c-w>H", "Move Left" },
     L = { "<c-w>L", "Move Right" },
-    t = { ":NvimTreeToggle<CR>", "Toggle File Tree"},
-    T = { ":NvimTreeFocus<CR>", "Focus File Tree"},
+    t = { ":Neotree toggle<CR>", "Toggle File Tree"},
+    T = { ":Neotree focus<CR>", "Focus File Tree"},
   },
 
   q = {
