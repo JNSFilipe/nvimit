@@ -158,8 +158,18 @@ local mappings = {
     K = { "<c-w>K", "Move Up" },
     H = { "<c-w>H", "Move Left" },
     L = { "<c-w>L", "Move Right" },
-    t = { ":Neotree toggle<CR>", "Toggle File Tree"},
-    T = { ":Neotree focus<CR>", "Focus File Tree"},
+    t = { ":Neotree toggle<CR>", "Toggle File Tree" },
+    T = { ":Neotree focus<CR>", "Focus File Tree" },
+  },
+
+  t = {
+    name = "Terminal",
+    t = { "<cmd>lua _horizontal_term()<CR>", "Toggle Terminal" },
+    T = { "<cmd>lua _horizontal_term();_horizontal_term()<CR>", "Focus Terminal" },   -- Workaround to focus on terminal: just toggle it twice really fast ;D
+    h = { "<cmd>lua _htop_term()<CR>", "htop" },
+    s = { ":ToggleTermSendCurrentLine 1<CR>", "Send Line" },
+    S = { ":ToggleTermSendVisualLines 1<CR>", "Send Selected Lines" },
+    v = { ":ToggleTermSendVisualSelection 1<CR>", "Send Selection" },
   },
 
   q = {

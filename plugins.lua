@@ -13,6 +13,9 @@ return require('packer').startup(function(use)
   -- use {"kyazdani42/nvim-tree.lua", requires={'kyazdani42/nvim-web-devicons'}} -- 'kyazdani42/nvim-web-devicons' is optional, for file icons
   use {"nvim-neo-tree/neo-tree.nvim", branch = "v2.x", requires = { "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons", "MunifTanjim/nui.nvim"}} -- "kyazdani42/nvim-web-devicons" is not strictly required, but recommended
 
+  -- Terminal Emulation
+  use {"akinsho/toggleterm.nvim", tag = 'v2.*'}
+
   -- Themes
   use 'shaunsingh/nord.nvim'
 
