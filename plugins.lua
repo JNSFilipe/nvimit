@@ -1,8 +1,5 @@
 return require("packer").startup(function(use)
-  -- My plugins here
-  -- use 'foo1/bar1.nvim'
-  -- use 'foo2/bar2.nvim'
-  
+
   -- Plugin Mangager
   use "wbthomason/packer.nvim" -- Have packer manage itself
 
@@ -18,7 +15,23 @@ return require("packer").startup(function(use)
 
   -- Navigation
   use {"phaazon/hop.nvim", branch = "v2"}
-  
+
+  -- Coding
+  ---- Completion
+  use "hrsh7th/nvim-cmp"                  -- completion plugin
+  use "hrsh7th/cmp-buffer"                -- buffer completions
+  use "hrsh7th/cmp-path"                  -- path completions
+  use "hrsh7th/cmp-cmdline"               -- cmdline completions
+  use "hrsh7th/cmp-nvim-lsp"              -- integration with lsp
+  use "hrsh7th/cmp-emoji"
+  ---- Snippets
+  use "L3MON4D3/LuaSnip"                  -- snippet engine 
+  use "saadparwaiz1/cmp_luasnip"          -- integration with cmp
+  use 'rafamadriz/friendly-snippets'      -- actual snippets
+  ---- LSP
+  use "neovim/nvim-lspconfig"
+  use "williamboman/nvim-lsp-installer"   -- TODO replace with meson.nvim
+
   -- Themes
   use "shaunsingh/nord.nvim"
 

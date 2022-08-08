@@ -2,9 +2,9 @@
 ---------------------------------- Useful Shortcuts and Dealing with Erros ----------------------------------
 -------------------------------------------------------------------------------------------------------------
 
-local status_ok, which_key = pcall(require, "which-key") 
+local status_ok, which_key = pcall(require, "which-key")
 
-if not status_ok then 
+if not status_ok then
   return
 end
 
@@ -178,6 +178,24 @@ local mappings = {
     k = { "<cmd>HopChar2MW<CR>", "Jump 2 Chars"},
     h = { "<cmd>HopChar1MW<CR>", "Jump 1 Char"},
     l = { "<cmd>HopLineMW<CR>", "Jump to Line"},
+    d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Jump to Definition"},
+    D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Jump to Declaration"},
+  },
+
+  c = {
+    name = "Coding",
+    H = {"<cmd>lua vim.lsp.buf.signature_help()<CR>", "Show Signature Help"},
+    h = {"<cmd>lua vim.lsp.buf.hover()<CR>", "Show Hover Help"},
+    r = {"<cmd>lua vim.lsp.buf.references()<CR>", "Show List of References"},
+    R = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Refactor Rename in Buffer"},
+    f = {"<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Code"},
+    d = {
+      name = "Diagnostics",
+      d = {"<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'rounded' })<CR>", "Show Current Diagnostic"},
+      n = {"<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", "Go to Next Diagnostic"},
+      p = {"<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", "Go to Proveious Diagnostic"},
+      l = {"<cmd>lua vim.diagnostic.setloclist()<CR>", "Show Diagnostics List"},
+    },
   },
 
   q = {
