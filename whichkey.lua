@@ -189,6 +189,7 @@ local mappings = {
     r = {"<cmd>lua vim.lsp.buf.references()<CR>", "Show List of References"},
     R = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Refactor Rename in Buffer"},
     f = {"<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Code"},
+    w = {"a<M-e>", "Fast Wrap (<M-e> in Insert)"},
     d = {
       name = "Diagnostics",
       d = {"<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'rounded' })<CR>", "Show Current Diagnostic"},

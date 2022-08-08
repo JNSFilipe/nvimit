@@ -27,13 +27,15 @@ return require("packer").startup(function(use)
   ---- Snippets
   use "L3MON4D3/LuaSnip"                  -- snippet engine 
   use "saadparwaiz1/cmp_luasnip"          -- integration with cmp
-  use 'rafamadriz/friendly-snippets'      -- actual snippets
+  use "rafamadriz/friendly-snippets"      -- actual snippets
   ---- LSP
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"   -- TODO replace with meson.nvim
   ---- Better Syntax Highlighting
   use { "nvim-treesitter/nvim-treesitter", run = "<cmd>TSUpdate<CR>"}
-  use "p00f/nvim-ts-rainbow"              -- Different colours for matching parenthesis
+  use "p00f/nvim-ts-rainbow"              -- different colours for matching parenthesis
+  ---- Others
+  use "windwp/nvim-autopairs"             -- automatically closes parenthisis, brackets, etc, integrates with both cmp and treesitter
 
   -- Themes
   use "shaunsingh/nord.nvim"
