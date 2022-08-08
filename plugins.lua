@@ -31,6 +31,9 @@ return require("packer").startup(function(use)
   ---- LSP
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"   -- TODO replace with meson.nvim
+  ---- Better Syntax Highlighting
+  use { "nvim-treesitter/nvim-treesitter", run = "<cmd>TSUpdate<CR>"}
+  use "p00f/nvim-ts-rainbow"              -- Different colours for matching parenthesis
 
   -- Themes
   use "shaunsingh/nord.nvim"
