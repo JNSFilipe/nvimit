@@ -158,6 +158,7 @@ local mappings = {
     g = { "<cmd>lua require('telescope.builtin').live_grep()<CR>", "Find within Files (Grep)"},
     b = { "<cmd>lua require('telescope.builtin').buffers()<CR>", "Find Buffers"},
     w = { "<cmd>lua require('telescope.builtin').grep_string(require('telescope.themes').get_cursor())<CR>", "Find Word within Files"},
+    t = { "<cmd>TodoTelescope<CR>", "List TODOs"},
   },
 
   b = {

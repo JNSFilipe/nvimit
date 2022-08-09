@@ -39,6 +39,7 @@ return require("packer").startup(function(use)
   use "windwp/nvim-autopairs"             -- automatically closes parenthisis, brackets, etc, integrates with both cmp and treesitter
   use "numToStr/Comment.nvim"             -- This one and the next are for dealing with comments
   use "JoosepAlviste/nvim-ts-context-commentstring"
+  use {"folke/todo-comments.nvim", requires = { "nvim-lua/plenary.nvim"} }  -- TODO comments support
 
   -- Themes
   use "shaunsingh/nord.nvim"
