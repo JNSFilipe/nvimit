@@ -15,6 +15,7 @@ return require("packer").startup(function(use)
 
   -- Navigation
   use {"phaazon/hop.nvim", branch = "v2"}
+  use {"nvim-telescope/telescope.nvim", tag = '0.1.0', requires = { "nvim-lua/plenary.nvim" }}
 
   -- Coding
   ---- Completion

@@ -151,8 +151,13 @@ local mappings = {
   ["<tab>"] = { "<c-w><c-p>", "Previous Pane" },
 
   f = {
-    name = "File",
+    name = "File/Find",
     s = { ":w<CR>", "Save File" },
+    f = { "<cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>", "Find within Buffers"},
+    F = { "<cmd>lua require('telescope.builtin').find_files()<CR>", "Find File"},
+    g = { "<cmd>lua require('telescope.builtin').live_grep()<CR>", "Find within Files (Grep)"},
+    b = { "<cmd>lua require('telescope.builtin').buffers()<CR>", "Find Buffers"},
+    w = { "<cmd>lua require('telescope.builtin').grep_string(require('telescope.themes').get_cursor())<CR>", "Find Word within Files"},
   },
 
   b = {
@@ -196,7 +201,8 @@ local mappings = {
     k = { "<cmd>HopChar2MW<CR>", "Jump 2 Chars"},
     h = { "<cmd>HopChar1MW<CR>", "Jump 1 Char"},
     l = { "<cmd>HopLineMW<CR>", "Jump to Line"},
-    d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Jump to Definition"},
+    -- d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Jump to Definition"},
+    d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", "Jump to Definition"},
     D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Jump to Declaration"},
   },
 
@@ -204,7 +210,8 @@ local mappings = {
     name = "Coding",
     H = {"<cmd>lua vim.lsp.buf.signature_help()<CR>", "Show Signature Help"},
     h = {"<cmd>lua vim.lsp.buf.hover()<CR>", "Show Hover Help"},
-    r = {"<cmd>lua vim.lsp.buf.references()<CR>", "Show List of References"},
+    -- r = {"<cmd>lua vim.lsp.buf.references()<CR>", "Show List of References"},
+    r = {"<cmd>lua require('telescope.builtin').lsp_references()<CR>", "Show List of References"},
     R = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Refactor Rename in Buffer"},
     f = {"<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Code"},
     w = {"a<M-e>", "Fast Wrap (<M-e> in Insert)"},  -- TODO get this to work
