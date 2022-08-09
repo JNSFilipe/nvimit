@@ -79,8 +79,17 @@ local setup = {
   },
 }
 
-local opts = {
+local n_opts = {
   mode = "n", -- NORMAL mode
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+
+local v_opts = {
+  mode = "v", -- VISUAL mode
   prefix = "<leader>",
   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
   silent = true, -- use `silent` when creating keymaps
@@ -124,6 +133,15 @@ function fibonacci_split()
 end
 
 
+function toggle_comment_line_or_block()
+  if vim.api.nvim_get_mode()['mode'] == "n" then
+    require("Comment.api").toggle_current_linewise()
+  else
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>",true,false,true), 'm', true)
+  end
+end
+
+
 -------------------------------------------------------------------------------------------------------------
 ------------------------------------------- Actual Menu Structure -------------------------------------------
 -------------------------------------------------------------------------------------------------------------
@@ -152,7 +170,7 @@ local mappings = {
     },
     j = { "<c-w><c-j>", "Focus Down" },
     k = { "<c-w><c-k>", "Focus Up" },
-    h = { "<c-w><c-h>", "Focus Left" }, 
+    h = { "<c-w><c-h>", "Focus Left" },
     l = { "<c-w><c-l>", "Focus Right" },
     J = { "<c-w>J", "Move Down" },
     K = { "<c-w>K", "Move Up" },
@@ -189,7 +207,8 @@ local mappings = {
     r = {"<cmd>lua vim.lsp.buf.references()<CR>", "Show List of References"},
     R = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Refactor Rename in Buffer"},
     f = {"<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Code"},
-    w = {"a<M-e>", "Fast Wrap (<M-e> in Insert)"},
+    w = {"a<M-e>", "Fast Wrap (<M-e> in Insert)"},  -- TODO get this to work
+    c = {"<cmd>lua toggle_comment_line_or_block()<CR>", "Toggle Comments"},
     d = {
       name = "Diagnostics",
       d = {"<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'rounded' })<CR>", "Show Current Diagnostic"},
@@ -212,4 +231,5 @@ local mappings = {
 
 
 which_key.setup(setup)
-which_key.register(mappings, opts)
+which_key.register(mappings, n_opts)
+which_key.register(mappings, v_opts)

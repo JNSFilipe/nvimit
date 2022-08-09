@@ -36,6 +36,8 @@ return require("packer").startup(function(use)
   use "p00f/nvim-ts-rainbow"              -- different colours for matching parenthesis
   ---- Others
   use "windwp/nvim-autopairs"             -- automatically closes parenthisis, brackets, etc, integrates with both cmp and treesitter
+  use "numToStr/Comment.nvim"             -- This one and the next are for dealing with comments
+  use "JoosepAlviste/nvim-ts-context-commentstring"
 
   -- Themes
   use "shaunsingh/nord.nvim"

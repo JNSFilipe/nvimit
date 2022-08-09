@@ -11,6 +11,7 @@ end
 
 --Remap space as leader key
 keymap("n", "<Space>", "", opts)
+keymap("v", "<Space>", "", opts)
 vim.g.mapleader = " "
 -- vim.g.maplocalleader = " "
 -- keymap("n", "<C-Space>", "<cmd>WhichKey \\<leader><cr>")
