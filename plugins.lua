@@ -49,6 +49,7 @@ return require("packer").startup(function(use)
 
   -- Other Stuff
   use "lewis6991/impatient.nvim"          -- Speeds up Plugin loading time
+  use "olimorris/persisted.nvim"          -- Session Management
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

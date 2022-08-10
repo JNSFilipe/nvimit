@@ -226,6 +226,15 @@ local mappings = {
     },
   },
 
+  s = {
+    name = "Sessions",
+    s = {"<cmd>Telescope persisted<CR>", "Search Sessions"},
+    S = {"<cmd>SessionSave<CR>", "Save Session"},
+    r = {"<cmd>SessionLoad<CR>", "Restore Session in Current Path"},
+    l = {"<cmd>SessionLoadLast<CR>", "Restore Last Session"},
+    d = {"<cmd>SessionDelete<CR>", "Delete Current Session"},
+  },
+
   q = {
     name = "Quit",
     q = { ":q<CR>", "Quit Window" },
