@@ -213,7 +213,6 @@ local mappings = {
     h = {"<cmd>lua vim.lsp.buf.hover()<CR>", "Show Hover Help"},
     -- r = {"<cmd>lua vim.lsp.buf.references()<CR>", "Show List of References"},
     r = {"<cmd>lua require('telescope.builtin').lsp_references()<CR>", "Show List of References"},
-    R = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Refactor Rename in Buffer"},
     f = {"<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Code"},
     w = {"<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('a<M-e>',true,false,true), 't', true)<CR>", "Fast Wrap (<M-e> in Insert)"},  -- TODO get this to work
     c = {"<cmd>lua toggle_comment_line_or_block()<CR>", "Toggle Comments"},
@@ -224,6 +223,12 @@ local mappings = {
       p = {"<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", "Go to Proveious Diagnostic"},
       l = {"<cmd>lua vim.diagnostic.setloclist()<CR>", "Show Diagnostics List"},
     },
+  },
+
+  e = {
+    name = "Editing",
+    r = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Refactor Rename in Buffer"},
+    p = {"<cmd>Telescope neoclip<CR>", "Paste List"}
   },
 
   s = {

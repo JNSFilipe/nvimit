@@ -43,3 +43,39 @@ session.setup({
   },
 })
 
+
+-------------------------------------------------------------------------------------------------------------
+------------------------------------------------ Paste Lists ------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+
+local status_ok, neoclip = pcall(require, "neoclip")
+if not status_ok then
+  return
+end
+telescope.load_extension("neoclip")
+
+neoclip.setup({
+  enable_persistent_history = true,
+  keys = {
+    telescope = {
+      i = {
+        select = "<c-h>",
+        paste = {"<c-p>", "<c-l>", "<CR>"},
+        paste_behind = "<c-o>",
+        replay = "<c-q>",  -- replay a macro
+        delete = "<c-d>",  -- delete an entry
+        custom = {},
+      },
+      n = {
+        select = "h",
+        paste = {"p", "l", "<CR>"},
+        paste_behind = "P",
+        replay = "q",
+        delete = "d",
+        custom = {},
+      },
+    },
+  },
+})
+
+
