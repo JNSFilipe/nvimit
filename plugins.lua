@@ -31,7 +31,7 @@ return require("packer").startup(function(use)
   use "rafamadriz/friendly-snippets"      -- actual snippets
   ---- LSP
   use "neovim/nvim-lspconfig"
-  use "williamboman/nvim-lsp-installer"   -- TODO replace with meson.nvim
+  use "williamboman/nvim-lsp-installer"   -- TODO: replace with meson.nvim, eventually
   ---- Better Syntax Highlighting
   use { "nvim-treesitter/nvim-treesitter", run = "<cmd>TSUpdate<CR>"}
   use "p00f/nvim-ts-rainbow"              -- different colours for matching parenthesis
@@ -51,6 +51,7 @@ return require("packer").startup(function(use)
   use "lewis6991/impatient.nvim"          -- Speeds up Plugin loading time
   use "olimorris/persisted.nvim"          -- Session Management
   use {"AckslD/nvim-neoclip.lua", requires = { "kkharji/sqlite.lua", module = "sqlite" }}  -- Records yanked excerpts
+  use "famiu/bufdelete.nvim"              -- Closes buffers without losing current window layout
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

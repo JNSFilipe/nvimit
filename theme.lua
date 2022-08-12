@@ -82,6 +82,7 @@ bufferline.setup {
     persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }
+    -- separator_style = "thin", -- | "thick" | "thin" | { 'any', 'any' },
     separator_style = "thin", -- | "thick" | "thin" | { 'any', 'any' },
     enforce_regular_tabs = true,
     always_show_bufferline = true,
@@ -89,100 +90,7 @@ bufferline.setup {
     --   -- add custom logic
     --   return buffer_a.modified > buffer_b.modified
     -- end
-  },
-  highlights = {
-    fill = {
-      guifg = { attribute = "fg", highlight = "#ff0000" },
-      guibg = { attribute = "bg", highlight = "TabLine" },
-    },
-    background = {
-      guifg = { attribute = "fg", highlight = "TabLine" },
-      guibg = { attribute = "bg", highlight = "TabLine" },
-    },
-
-    -- buffer_selected = {
-    --   guifg = {attribute='fg',highlight='#ff0000'},
-    --   guibg = {attribute='bg',highlight='#0000ff'},
-    --   gui = 'none'
-    --   },
-    buffer_visible = {
-      guifg = { attribute = "fg", highlight = "TabLine" },
-      guibg = { attribute = "bg", highlight = "TabLine" },
-    },
-
-    close_button = {
-      guifg = { attribute = "fg", highlight = "TabLine" },
-      guibg = { attribute = "bg", highlight = "TabLine" },
-    },
-    close_button_visible = {
-      guifg = { attribute = "fg", highlight = "TabLine" },
-      guibg = { attribute = "bg", highlight = "TabLine" },
-    },
-    -- close_button_selected = {
-    --   guifg = {attribute='fg',highlight='TabLineSel'},
-    --   guibg ={attribute='bg',highlight='TabLineSel'}
-    --   },
-
-    tab_selected = {
-      guifg = { attribute = "fg", highlight = "Normal" },
-      guibg = { attribute = "bg", highlight = "Normal" },
-    },
-    tab = {
-      guifg = { attribute = "fg", highlight = "TabLine" },
-      guibg = { attribute = "bg", highlight = "TabLine" },
-    },
-    tab_close = {
-      -- guifg = {attribute='fg',highlight='LspDiagnosticsDefaultError'},
-      guifg = { attribute = "fg", highlight = "TabLineSel" },
-      guibg = { attribute = "bg", highlight = "Normal" },
-    },
-
-    duplicate_selected = {
-      guifg = { attribute = "fg", highlight = "TabLineSel" },
-      guibg = { attribute = "bg", highlight = "TabLineSel" },
-      gui = "italic",
-    },
-    duplicate_visible = {
-      guifg = { attribute = "fg", highlight = "TabLine" },
-      guibg = { attribute = "bg", highlight = "TabLine" },
-      gui = "italic",
-    },
-    duplicate = {
-      guifg = { attribute = "fg", highlight = "TabLine" },
-      guibg = { attribute = "bg", highlight = "TabLine" },
-      gui = "italic",
-    },
-
-    modified = {
-      guifg = { attribute = "fg", highlight = "TabLine" },
-      guibg = { attribute = "bg", highlight = "TabLine" },
-    },
-    modified_selected = {
-      guifg = { attribute = "fg", highlight = "Normal" },
-      guibg = { attribute = "bg", highlight = "Normal" },
-    },
-    modified_visible = {
-      guifg = { attribute = "fg", highlight = "TabLine" },
-      guibg = { attribute = "bg", highlight = "TabLine" },
-    },
-
-    separator = {
-      guifg = { attribute = "bg", highlight = "TabLine" },
-      guibg = { attribute = "bg", highlight = "TabLine" },
-    },
-    separator_selected = {
-      guifg = { attribute = "bg", highlight = "Normal" },
-      guibg = { attribute = "bg", highlight = "Normal" },
-    },
-    -- separator_visible = {
-    --   guifg = {attribute='bg',highlight='TabLine'},
-    --   guibg = {attribute='bg',highlight='TabLine'}
-    --   },
-    indicator_selected = {
-      guifg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
-      guibg = { attribute = "bg", highlight = "Normal" },
-    },
-  },
+ },
 }
 
 
@@ -195,12 +103,42 @@ if not status_ok then
   return
 end
 
--- TODO: show lsp server in statusbar and possibly hide file name
+local lsp_status = {
+  function()
+    local msg = "No Active Lsp"
+    local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+    local clients = vim.lsp.get_active_clients()
+    if next(clients) == nil then
+      return msg
+    end
+    for _, client in ipairs(clients) do
+      local filetypes = client.config.filetypes
+      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+        return client.name
+      end
+    end
+    return msg
+  end,
+  icon = " LSP:",
+  color = { fg = "#ffffff", gui = "bold" },
+}
+
 lualine.setup{
   options = {
     theme = "nord",
+    component_separators = "",
+    section_separators = { left = "", right = "" },
   },
+  sections = {
+    lualine_a = {"mode"},
+    lualine_b = {"branch", "diff"},
+    lualine_c = {"filename", lsp_status, "diagnostics"},
+    lualine_x = {"encoding", "fileformat", "filetype"},
+    lualine_y = {"progress"},
+    lualine_z = {"location"},
+  }
 }
+
 
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------- Greeter --------------------------------------------------
@@ -218,17 +156,12 @@ end
 
 -- Set header
 dashboard.section.header.val = {
-  "   ▄▄        ▄  ▄               ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄       ▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄   ",
-  "  ▐░░▌      ▐░▌▐░▌             ▐░▌▐░░░░░░░░░░░▌▐░░▌     ▐░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌  ",
-  "  ▐░▌░▌     ▐░▌ ▐░▌           ▐░▌  ▀▀▀▀█░█▀▀▀▀ ▐░▌░▌   ▐░▐░▌ ▀▀▀▀█░█▀▀▀▀  ▀▀▀▀█░█▀▀▀▀   ",
-  "  ▐░▌▐░▌    ▐░▌  ▐░▌         ▐░▌       ▐░▌     ▐░▌▐░▌ ▐░▌▐░▌     ▐░▌          ▐░▌       ",
-  "  ▐░▌ ▐░▌   ▐░▌   ▐░▌       ▐░▌        ▐░▌     ▐░▌ ▐░▐░▌ ▐░▌     ▐░▌          ▐░▌       ",
-  "  ▐░▌  ▐░▌  ▐░▌    ▐░▌     ▐░▌         ▐░▌     ▐░▌  ▐░▌  ▐░▌     ▐░▌          ▐░▌       ",
-  "  ▐░▌   ▐░▌ ▐░▌     ▐░▌   ▐░▌          ▐░▌     ▐░▌   ▀   ▐░▌     ▐░▌          ▐░▌       ",
-  "  ▐░▌    ▐░▌▐░▌      ▐░▌ ▐░▌           ▐░▌     ▐░▌       ▐░▌     ▐░▌          ▐░▌       ",
-  "  ▐░▌     ▐░▐░▌       ▐░▐░▌        ▄▄▄▄█░█▄▄▄▄ ▐░▌       ▐░▌ ▄▄▄▄█░█▄▄▄▄      ▐░▌       ",
-  "  ▐░▌      ▐░░▌        ▐░▌        ▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌     ▐░▌       ",
-  "   ▀        ▀▀          ▀          ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀       ▀        ",
+  "   ███╗   ██╗██╗   ██╗██╗███╗   ███╗██╗████████╗ ",
+  "   ████╗  ██║██║   ██║██║████╗ ████║██║╚══██╔══╝ ",
+  "   ██╔██╗ ██║██║   ██║██║██╔████╔██║██║   ██║    ",
+  "   ██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║██║   ██║    ",
+  "   ██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║██║   ██║    ",
+  "   ╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝   ╚═╝    ",
 }
 
 -- dashboard.section.header.val = {
