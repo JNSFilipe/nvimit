@@ -79,3 +79,17 @@ neoclip.setup({
 })
 
 
+-------------------------------------------------------------------------------------------------------------
+----------------------------------------------- Spell Checker -----------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+
+local status_ok, spellchecker = pcall(require, "spellsitter")
+if not status_ok then
+  return
+end
+
+spellchecker.setup {
+  enable = {"latex", "bibtex", "bib", "tex", "text", "txt", "org", "markdown"},
+  debug = false
+}
+
