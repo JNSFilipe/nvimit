@@ -48,8 +48,3 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>")
 -- Remap Esc to jj
 keymap("i", "jj", "<Esc>")
 
--- Buffer Navigation
-keymap("n", "<C-a>", "<cmd>BufferLineMovePrev<CR>")
-keymap("n", "<C-d>", "<cmd>BufferLineMoveNext<CR>")
-keymap("i", "<C-a>", "<cmd>BufferLineMovePrev<CR>")
-keymap("i", "<C-d>", "<cmd>BufferLineMoveNext<CR>")

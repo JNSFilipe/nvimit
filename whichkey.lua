@@ -163,7 +163,11 @@ local mappings = {
 
   b = {
     name = "Buffer",
-    ["<tab>"] = { ":b#<CR>", "Previous Buffer" },
+    ["<tab>"] = { "<cmd>b#<CR>", "Previous Buffer" },
+    h = { "<cmd>bprev<CR>", "Go to Buffer on the Left" },
+    l = { "<cmd>bnext<CR>", "Go to Buffer on the Right" },
+    p = { "<cmd>BufferLinePick<CR>", "Pick Buffer" },
+    d = { "<cmd>BufferLinePickClose<CR>", "Pick Buffer to Colse" },
   },
 
   w = {
