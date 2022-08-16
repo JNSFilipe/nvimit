@@ -135,9 +135,17 @@ end
 
 function toggle_comment_line_or_block()
   if vim.api.nvim_get_mode()['mode'] == "n" then
-    require("Comment.api").toggle_current_linewise()
+    vim.cmd("CommentToggle")
   else
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>",true,false,true), 'm', true)
+    -- Get current cursor position
+    local cline, _ = unpack(vim.api.nvim_win_get_cursor(0))
+    -- Get line where visual mode started
+    local vline = vim.fn.line('v')
+
+    local sline = math.min(cline, vline)
+    local eline = math.max(cline, vline)
+
+    vim.cmd(string.format("%d,%dCommentToggle", sline, eline))
   end
 end
 
