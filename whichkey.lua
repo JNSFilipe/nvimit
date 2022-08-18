@@ -161,8 +161,8 @@ local mappings = {
   f = {
     name = "File/Find",
     s = { ":w<CR>", "Save File" },
-    f = { "<cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>", "Find within Buffers"},
-    F = { "<cmd>lua require('telescope.builtin').find_files()<CR>", "Find File"},
+    F = { "<cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>", "Find within Buffers"},
+    f = { "<cmd>lua require('telescope.builtin').find_files()<CR>", "Find File"},
     g = { "<cmd>lua require('telescope.builtin').live_grep()<CR>", "Find within Files (Grep)"},
     b = { "<cmd>lua require('telescope.builtin').buffers()<CR>", "Find Buffers"},
     w = { "<cmd>lua require('telescope.builtin').grep_string(require('telescope.themes').get_cursor())<CR>", "Find Word within Files"},
@@ -174,7 +174,7 @@ local mappings = {
     ["<tab>"] = { "<cmd>b#<CR>", "Previous Buffer" },
     h = { "<cmd>bprev<CR>", "Go to Buffer on the Left" },
     l = { "<cmd>bnext<CR>", "Go to Buffer on the Right" },
-    p = { "<cmd>BufferLinePick<CR>", "Pick Buffer" },
+    b = { "<cmd>BufferLinePick<CR>", "Pick Buffer" },
     d = { "<cmd>BufferLinePickClose<CR>", "Pick Buffer to Colse" },
   },
 
