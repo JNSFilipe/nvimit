@@ -150,6 +150,26 @@ function toggle_comment_line_or_block()
 end
 
 
+function compile_according_with_filetype()
+  local ft = vim.bo.filetype
+  if ft == "tex" or ft == "bib" then
+    vim.cmd("VimtexCompile")
+  end
+  print(ft)
+end
+
+
+function debug_according_with_filetype()
+  local ft = vim.bo.filetype
+  if ft == "tex" or ft == "bib" then
+    print("Not available, showing log instead")
+    vim.cmd("VimtexErrors")
+    vim.cmd("VimtexView")
+  end
+  print(ft)
+end
+
+
 -------------------------------------------------------------------------------------------------------------
 ------------------------------------------- Actual Menu Structure -------------------------------------------
 -------------------------------------------------------------------------------------------------------------
@@ -260,6 +280,12 @@ local mappings = {
     W = { ":wqall<CR>", "Quit Vim and Save All" },
     x = { ":q!<CR>", "Quit Window Without Saving" },
     X = { ":qa!<CR>", "Quit Vim Without Saving" },
+  },
+
+  r = {
+    name = "Running",
+    r = {"<cmd>lua compile_according_with_filetype()<CR>", "Compile and Run"},
+    d = {"<cmd>lua debug_according_with_filetype()<CR>", "Debug"}
   },
 }
 

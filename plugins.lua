@@ -41,6 +41,9 @@ return require("packer").startup(function(use)
   use "JoosepAlviste/nvim-ts-context-commentstring"                         -- TODO: Verify if this is really needed; it was a required by Comment.nvim, but no mention of it is done in nvim-comment
   use {"folke/todo-comments.nvim", requires = { "nvim-lua/plenary.nvim"} }  -- TODO comments support
 
+  -- Language Specific
+  use "lervag/vimtex"                     -- LaTex TODO: automatic word wrap, configure extension in lua
+
   -- Themes
   use "shaunsingh/nord.nvim"
   use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}      -- Buffer line
