@@ -243,8 +243,8 @@ local mappings = {
     name = "Coding",
     H = {"<cmd>lua vim.lsp.buf.signature_help()<CR>", "Show Signature Help"},
     h = {"<cmd>lua vim.lsp.buf.hover()<CR>", "Show Hover Help"},
-    -- r = {"<cmd>lua vim.lsp.buf.references()<CR>", "Show List of References"},
-    r = {"<cmd>lua require('telescope.builtin').lsp_references()<CR>", "Show List of References"},
+    --  = {"<cmd>lua vim.lsp.buf.references()<CR>", "Show List of References"},
+    R = {"<cmd>lua require('telescope.builtin').lsp_references()<CR>", "Show List of References"},
     f = {"<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Code"},
     w = {"<cmd>lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('a<M-e>',true,false,true), 't', true)<CR>", "Fast Wrap (<M-e> in Insert)"},  -- TODO get this to work
     c = {"<cmd>lua toggle_comment_line_or_block()<CR>", "Toggle Comments"},
@@ -254,6 +254,11 @@ local mappings = {
       n = {"<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", "Go to Next Diagnostic"},
       p = {"<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", "Go to Proveious Diagnostic"},
       l = {"<cmd>lua vim.diagnostic.setloclist()<CR>", "Show Diagnostics List"},
+    },
+    r = {
+      name = "Run/Compile",
+      r = {"<cmd>lua compile_according_with_filetype()<CR>", "Compile and Run"},
+      d = {"<cmd>lua debug_according_with_filetype()<CR>", "Debug"}
     },
   },
 
@@ -272,6 +277,15 @@ local mappings = {
     d = {"<cmd>SessionDelete<CR>", "Delete Current Session"},
   },
 
+  r = {
+    name = "REPL",
+    r = {"<cmd>IronRepl<CR>", "Toggle REPL"},
+    R = {"<cmd>IronFocus<CR>", "Focus REPL"},
+    t = {"<cmd>IronRestart<CR>", "Restart REPL"},
+    l = {"<cmd>lua require('iron.core').send_line()<CR>", "Run Line"},
+    s = {"<esc><cmd>lua require('iron.core').visual_send()<CR>", "Run Selection"},
+  },
+
   q = {
     name = "Quit",
     q = { ":q<CR>", "Quit Window" },
@@ -282,13 +296,7 @@ local mappings = {
     X = { ":qa!<CR>", "Quit Vim Without Saving" },
   },
 
-  r = {
-    name = "Running",
-    r = {"<cmd>lua compile_according_with_filetype()<CR>", "Compile and Run"},
-    d = {"<cmd>lua debug_according_with_filetype()<CR>", "Debug"}
-  },
 }
-
 
 which_key.setup(setup)
 which_key.register(mappings, n_opts)

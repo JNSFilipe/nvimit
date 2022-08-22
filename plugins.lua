@@ -56,6 +56,7 @@ return require("packer").startup(function(use)
   use {"AckslD/nvim-neoclip.lua", requires = { "kkharji/sqlite.lua", module = "sqlite" }}  -- Records yanked excerpts
   use "famiu/bufdelete.nvim"              -- Closes buffers without losing current window layout
   use "lewis6991/spellsitter.nvim"        -- Spell Checker
+  use "hkupty/iron.nvim"                  -- REPL support
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
