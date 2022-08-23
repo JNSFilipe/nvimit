@@ -284,6 +284,7 @@ local mappings = {
     t = {"<cmd>IronRestart<CR>", "Restart REPL"},
     l = {"<cmd>lua require('iron.core').send_line()<CR>", "Run Line"},
     s = {"<esc><cmd>lua require('iron.core').visual_send()<CR>", "Run Selection"},
+    f = {"<esc><cmd>lua require('iron.core').send_file()<CR>", "Run File"},
   },
 
   q = {
