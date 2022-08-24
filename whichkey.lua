@@ -165,6 +165,8 @@ function debug_according_with_filetype()
     print("Not available, showing log instead")
     vim.cmd("VimtexErrors")
     vim.cmd("VimtexView")
+  else
+    vim.cmd("lua require'dap'.continue()")
   end
   print(ft)
 end
@@ -258,7 +260,14 @@ local mappings = {
     r = {
       name = "Run/Compile",
       r = {"<cmd>lua compile_according_with_filetype()<CR>", "Compile and Run"},
-      d = {"<cmd>lua debug_according_with_filetype()<CR>", "Debug"}
+      d = {"<cmd>lua debug_according_with_filetype()<CR>", "Satrt/Continue Debug"},
+      b = {"<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Toggle Breakpoint"},
+      i = {"<cmd>lua require'dap'.step_into()<CR>", "Step into"},
+      s = {"<cmd>lua require'dap'.step_over()<CR>", "Step"},
+      c = {"<cmd>lua require'dap'.close()<CR>", "Stop Debogging"},
+      e = {"<cmd>lua require'dap'.repl.open()<CR>", "Debugging REPL"},
+      u = {"<cmd>lua require('dapui').toggle()<CR>", "Toggle UI"},
+      l = {"<cmd>lua require('dapui').float_element('scopes')<CR>", "Inline Info"},
     },
   },
 

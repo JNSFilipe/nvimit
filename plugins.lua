@@ -40,6 +40,8 @@ return require("packer").startup(function(use)
   use "terrortylor/nvim-comment"          -- This one and the next are for dealing with comments
   use "JoosepAlviste/nvim-ts-context-commentstring"                         -- TODO: Verify if this is really needed; it was a required by Comment.nvim, but no mention of it is done in nvim-comment
   use {"folke/todo-comments.nvim", requires = { "nvim-lua/plenary.nvim"} }  -- TODO comments support
+  use "mfussenegger/nvim-dap"
+  use "rcarriga/nvim-dap-ui"
 
   -- Language Specific
   use "lervag/vimtex"                     -- LaTex TODO: automatic word wrap, configure extension in lua
