@@ -1,4 +1,12 @@
-# NVIMIT
+
+```
+███╗   ██╗██╗   ██╗██╗███╗   ███╗██╗████████╗ 
+████╗  ██║██║   ██║██║████╗ ████║██║╚══██╔══╝ 
+██╔██╗ ██║██║   ██║██║██╔████╔██║██║   ██║    
+██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║██║   ██║    
+██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║██║   ██║    
+╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝   ╚═╝   
+```
 
 <div align="center"><p>
     <a href="https://github.com/JNSFilipe/nvimit/pulse">
@@ -18,12 +26,19 @@
 My personal NeoVim configuration, designed around the space leader key.
 Inspired heavily by [Spacemacs](https://github.com/syl20bnr/spacemacs) and [LunarVim](https://github.com/LunarVim/LunarVim).
 
-## Installation
+This config was designed with the following languages in mind:
+- C/C++
+- Python
+- Lua
+- LaTeX
+- Markdown
+
+# Installation
 
 Just clone the repository wherever you want, change directory into it, and then run the installation script provided.
 Please notice that the installation script sets up symbolic links from the clone the folder to the `.config/nvim` folder. Therefore, the cloned repository cannot be deleted.
 
-## Screenshots
+# Screenshots
 
 TODO
 
