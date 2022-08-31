@@ -179,6 +179,9 @@ end
 local mappings = {
 
   ["<tab>"] = { "<c-w><c-p>", "Previous Pane" },
+  ["p"] = { "<cmd>Telescope projects<CR>", "Project Management" },
+
+
 
   f = {
     name = "File/Find",

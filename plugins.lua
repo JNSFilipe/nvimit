@@ -59,6 +59,7 @@ return require("packer").startup(function(use)
   use "famiu/bufdelete.nvim"              -- Closes buffers without losing current window layout
   use "lewis6991/spellsitter.nvim"        -- Spell Checker
   use "hkupty/iron.nvim"                  -- REPL support
+  use "ahmedkhalf/project.nvim"           -- Project management support
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
