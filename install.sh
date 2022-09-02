@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkdir -p ~/.config/nvim/lua/user
 ln -s ./init.lua ~/.config/nvim/init.lua
 ln -s ./misc.lua ~/.config/nvim/lua/user/misc.lua
 ln -s ./theme.lua ~/.config/nvim/lua/user/theme.lua
@@ -13,5 +14,5 @@ ln -s ./whichkey.lua ~/.config/nvim/lua/user/whichkey.lua
 ln -s ./options.lua ~/.config/nvim/lua/user/options.lua
 ln -s ./packerbootstrap.lua ~/.config/nvim/lua/user/packerbootstrap.lua
 
-echo "NVIMIT installes sucessfully!"
+echo "NVIMIT installed sucessfully!"
 
