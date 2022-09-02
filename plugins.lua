@@ -44,7 +44,7 @@ return require("packer").startup(function(use)
   use "rcarriga/nvim-dap-ui"
 
   -- Language Specific
-  use "lervag/vimtex"                     -- LaTex TODO: automatic word wrap, configure extension in lua
+  use "lervag/vimtex"
 
   -- Themes
   use "shaunsingh/nord.nvim"
